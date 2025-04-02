@@ -24,10 +24,26 @@
 <script setup>
 import { ref } from 'vue';
 
+const emit = defineEmits(["add-note"])
+
 const noteTitle = ref('');
 const noteContent = ref('');
 
 const handleAdd = () => {
+  if (!noteTitle.value) {
+    noteTitle.value = 'Untitled';
+  }
 
-}
+  const newNote = {
+    id: Math.random().toString(36).substring(2,9),
+    title: noteTitle.value,
+    content: noteContent.value
+  }
+
+  // Emit new note object to the task component
+  emit("add-note", newNote);
+
+  noteTitle.value = '';
+  noteContent.value = '';
+};
 </script>
