@@ -1,0 +1,1 @@
+// This is the component for defining the view of each note in the note list.

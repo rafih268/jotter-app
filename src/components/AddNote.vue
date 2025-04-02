@@ -1,0 +1,1 @@
+// This will contain the component for adding a new note.
