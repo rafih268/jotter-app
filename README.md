@@ -1,2 +1,0 @@
-# jotter-app
-Notes editor
