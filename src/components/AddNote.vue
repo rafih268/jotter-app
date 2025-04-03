@@ -9,8 +9,8 @@
         class="w-full text-2xl font-bold p-2 border border-gray-300 rounded mb-4"
       />
       <textarea
-        v-model="noteContent"
         placeholder="Start typing here..."
+        v-model="noteContent"
         class="w-full h-full p-2 border border-gray-300 rounded mb-4 resize-none"
       ></textarea>
       <button
@@ -24,7 +24,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const emit = defineEmits(["add-note"])
+const emit = defineEmits(["add-note"]);
 
 const noteTitle = ref('');
 const noteContent = ref('');
@@ -40,7 +40,7 @@ const handleAdd = () => {
     content: noteContent.value
   }
 
-  // Emit new note object to the task component
+  // Emit new note object to the parent component
   emit("add-note", newNote);
 
   noteTitle.value = '';
