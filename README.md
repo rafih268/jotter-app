@@ -10,7 +10,7 @@
 ## Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/rafih268/vue-notes.git
+git clone https://github.com/rafih268/jotter-app.git
 ```
 
 2. Install dependencies:
