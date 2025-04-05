@@ -10,7 +10,7 @@
       </div>
       <!--<NoteList /> needs to be implmeneted-->
       <AddNote v-if="isAdding" @add-note="addNote" @close="isAdding = false" />
-      <EditNote v-if="isEditing" @edit-note="updateNote" @close="isEditing = false" />
+      <EditNote v-if="isEditing" :note="currentNote" @update-note="updateNote" @close="isEditing = false" />
     </div>
   </div>
 </template>
