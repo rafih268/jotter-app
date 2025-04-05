@@ -7,7 +7,7 @@
   </div>
   <div class="flex items-center">
     <button
-      @click="$emit(('edit-note', props.note))"
+      @click="$emit('edit-note', props.note)"
       class="mr-2 text-blue-500 cursor-pointer"
     >Edit</button>
     <button

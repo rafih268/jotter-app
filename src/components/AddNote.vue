@@ -45,7 +45,5 @@ const handleAdd = () => {
 
   noteTitle.value = '';
   noteContent.value = '';
-
-  emit(close);
 };
 </script>

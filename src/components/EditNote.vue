@@ -28,8 +28,8 @@ const props = defineProps(["note"]);
 
 const emit = defineEmits(["update-note"]);
 
-const newTitle = ref(''); // Note title will be retrieved from props once defined
-const newContent = ref(''); // Note content will be retrived from props once defined
+const newTitle = ref(props.note.title); // Note title will be retrieved from props once defined
+const newContent = ref(props.note.content); // Note content will be retrived from props once defined
 
 const handleUpdate = () => {
   if (newTitle.value && newContent.value) {
