@@ -8,7 +8,7 @@
           class="bg-blue-500 text-white px-4 py-2 rounded"
         > + Add Note</button>
       </div>
-      <!--<NoteList /> needs to be implmeneted-->
+      <NoteList :notes="notes" @edit-note="startEditing" @delete-note="deleteNote" />
       <AddNote v-if="isAdding" @add-note="addNote" @close="isAdding = false" />
       <EditNote v-if="isEditing" :note="currentNote" @update-note="updateNote" @close="isEditing = false" />
     </div>
@@ -20,7 +20,7 @@ import { ref } from 'vue';
 
 import AddNote from '../components/AddNote.vue';
 import EditNote from '../components/EditNote.vue';
-// import NoteList from '../components/NoteList.vue';
+import NoteList from '../components/NoteList.vue';
 
 const notes = ref([]);
 
