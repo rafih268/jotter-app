@@ -1,5 +1,18 @@
 <template>
-
+  <div class="min-h-screen bg-gray-100 p-4">
+    <div class="container mx-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-3xl font-bold">Note List</h1>
+        <button
+          @click="isAdding = true"
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+        > + Add Note</button>
+      </div>
+      <!--<NoteList /> needs to be implmeneted-->
+      <AddNote v-if="isAdding" @add-note="addNote" @close="isAdding = false" />
+      <EditNote v-if="isEditing" @edit-note="updateNote" @close="isEditing = false" />
+    </div>
+  </div>
 </template>
 
 <script setup>
