@@ -16,13 +16,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 import AddNote from '../components/AddNote.vue';
 import EditNote from '../components/EditNote.vue';
 import NoteList from '../components/NoteList.vue';
 
 const notes = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:5000/notes');
+    notes.value = response.data;
+  } catch (error) {
+    console.error('Error retrieving data', error);
+  }
+})
 
 // Modal visibility for adding and editing notes
 const isAdding = ref(false);
