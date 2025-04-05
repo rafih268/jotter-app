@@ -30,7 +30,7 @@ onMounted(async () => {
     const response = await axios.get('http://localhost:5000/notes');
     notes.value = response.data;
   } catch (error) {
-    console.error('Error retrieving data', error);
+    console.error('Unable to retrieve notes', error);
   }
 })
 
@@ -40,22 +40,35 @@ const isEditing = ref(false);
 
 const currentNote = ref(null);
 
-const addNote = (note) => {
-  notes.value.push(note);
-  isAdding.value = false;
-};
-
-const updateNote = (updatedNote) => {
-  const index = notes.value.findIndex(note => note.id === updatedNote.id);
-  if (index !== -1) {
-    notes.value[index] = updatedNote;
+const addNote = async (note) => {
+  try {
+    const response = await axios.post('http://localhost:5000/notes', note);
+  } catch (error) {
+    console.error('Unable to add new note', error);
+  } finally {
+    isAdding.value = false;
   }
-
-  isEditing.value = false;
 };
 
-const deleteNote = (noteId) => {
-  notes.value = notes.value.filter(note => note.id !== noteId);
+const updateNote = async (updatedNote) => {
+  const index = notes.value.findIndex(note => note.id === updatedNote.id);
+  try {
+    if (index !== -1) {
+      await axios.put(`http://localhost:5000/notes/${updatedNote.id}`, updatedNote);
+    }
+  } catch (error) {
+    console.log('Unable to update note', error);
+  } finally {
+    isEditing.value = false;
+  }
+};
+
+const deleteNote = async (noteId) => {
+  try {
+    await axios.delete(`http://localhost:5000/notes/${noteId}`);
+  } catch (error) {
+    console.error('Unable to delete note', error);
+  }
 };
 
 const startEditing = (note) => {
