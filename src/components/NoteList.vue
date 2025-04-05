@@ -2,9 +2,9 @@
   <div class="bg-white p-4 rounded-lg shadow-lg">
     <template v-if="notes.length > 0">
       <NoteItem
-        v-for="note in notes"
+        v-for="note in props.notes"
         :key="note.id"
-        :task="note"
+        :note="note"
         @edit-note="onEdit"
         @delete-note="onDelete"
       />
